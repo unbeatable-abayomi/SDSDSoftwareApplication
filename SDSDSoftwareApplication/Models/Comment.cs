@@ -13,7 +13,7 @@ namespace SDSDSoftwareApplication.Models
 
         public string Name { get; set; }
 
-        public Task Tasks { get; set; }
+        public Tasks Tasks { get; set; }
         public Guid TasksId { get; set; }
     }
 }
