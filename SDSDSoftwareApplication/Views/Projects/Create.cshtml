@@ -1,7 +1,127 @@
-﻿
+﻿@model SDSDSoftwareApplication.Models.Project;
 @{
     ViewData["Title"] = "Projects";
 }
 
-<h1>Crefate</h1>
-    
+
+<div class="section-body">
+    <div class="container-fluid">
+        <div class="row clearfix">
+
+            <div class="col-md-12">
+                <div class="tab-content">
+                    <div class="tab-pane active show" id="Company_Settings">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Company Settings</h3>
+                                <div class="card-options">
+                                    <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+                                    <a href="#" class="card-options-fullscreen" data-toggle="card-fullscreen"><i class="fe fe-maximize"></i></a>
+                                    <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form asp-action="Create">
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            @*<div class="form-group">
+                                                    <label asp-for="Id" class="control-label"></label>
+                                                    <input asp-for="Id" class="form-control" />
+                                                    <span asp-validation-for="Id" class="text-danger"></span>
+
+                                                </div>*@                      <div class="row">
+
+
+
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label asp-for="ProjectName" class="control-label"></label>
+                                                        <input asp-for="ProjectName" class="form-control" />
+                                                        <span asp-validation-for="ProjectName" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label asp-for="Description" class="control-label"></label>
+                                                        <input asp-for="Description" class="form-control" />
+                                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label asp-for="Duration" class="control-label"></label>
+                                                        <textarea asp-for="Duration" class="form-control"></textarea>
+                                                        <span asp-validation-for="Duration" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+
+
+                                                    @*<div class="form-group">
+                                                        <label asp-for="StartDate" class="control-label"></label>
+                                                        <input asp-for="StartDate" class="form-control" />
+                                                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                                                    </div>*@
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @*<div class="form-group">
+                                                        <label asp-for="EndDate" class="control-label"></label>
+                                                        <input asp-for="EndDate" class="form-control" />
+                                                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                                                    </div>*@
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @*<label asp-for="TasksId"></label>
+                                                            <select asp-for=" TasksId" class="form-control" asp-items="ViewBag.AllTasks">
+                                                                <option value="">Please Select Task</option>
+
+                                                            </select>
+                                                            <span asp-validation-for=" TasksId" class="text-danger"></span>*@
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @*<label asp-for="WorkersId"></label>
+                                                            <select asp-for="WorkersId" class="form-control" asp-items="ViewBag.AllWorkers">
+                                                                <option value="">Please Select Workers</option>
+
+                                                            </select>
+                                                            <span asp-validation-for="WorkersId" class="text-danger"></span>*@
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" value="Create Project" class="btn btn-primary" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <a asp-action="Index">Back to List</a>
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
