@@ -15,7 +15,7 @@ namespace SDSDSoftwareApplication.Data
         }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Department> Departments { get; set; }
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Tasks> Tasks { get; set; }
         
         public DbSet<Comment> Comments { get; set; }
        
