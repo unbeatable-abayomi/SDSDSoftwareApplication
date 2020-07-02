@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SDSDSoftwareApplication.Models
 {
-    public class Task
+    public class Tasks
     {
         public Guid Id { get; set; }
         [Required]
