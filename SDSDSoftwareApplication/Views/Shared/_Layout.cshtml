@@ -74,10 +74,10 @@
 
 <body class="font-montserrat">
     <!-- Page Loader -->
-    <div class="page-loader-wrapper">
-            <div class="loader">
-            </div>
+    @*<div class="page-loader-wrapper">
+        <div class="loader">
         </div>
+    </div>*@
 
     <div id="main_content">
 
@@ -351,7 +351,8 @@
                 <ul class="metismenu">
                     <li class="g_heading">Project</li>
                     <li class="active"><a href="index-2.html"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-                    <li><a asp-action="create" asp-controller="Projects"><i class="fa fa-list-ol"></i><span>Project list</span></a></li>
+                    <li><a  asp-controller="Projects" asp-action="create"><i class="fa fa-list-ol"></i><span>Project list</span></a></li>
+                    <li><a asp-controller="Projects" asp-action="index" ><i class="fa fa-list-ol"></i><span>Project index</span></a></li>
                     <li><a href="project-taskboard.html"><i class="fa fa-calendar-check-o"></i><span>Taskboard</span></a></li>
                     <li><a href="project-ticket.html"><i class="fa fa-list-ul"></i><span>Ticket List</span></a></li>
                     <li><a href="project-ticket-details.html"><i class="icon-tag"></i><span>Ticket Details</span></a></li>
