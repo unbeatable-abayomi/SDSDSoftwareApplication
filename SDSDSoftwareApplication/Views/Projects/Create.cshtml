@@ -41,6 +41,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title"> @Html.DisplayFor(modelItem => item.ProjectName)</h3>
+                                   
                                     <div class="card-options">
                                         <label class="custom-switch m-0">
                                             <input type="checkbox" value="1" class="custom-switch-input" checked>
@@ -50,33 +51,35 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <span class="tag tag-blue mb-3">Web Design</span>
+                                  
                                     <a class="tag tag-blue mb-3" asp-controller="Projects" asp-action="Edit" asp-route-Id="@item.Id">Edit</a>
-                                    <a class="tag tag-blue mb-3" asp-controller="Projects" asp-action="ConfrimDelete" asp-route-Id="@item.Id">Delete</a>
-                                    <p> @Html.DisplayFor(modelItem => item.Description)</p>
-                                    <div class="row">
-                                        <div class="col-5 py-1"><strong>Start Date:</strong></div>
-                                        <div class="col-7 py-1">    @Html.DisplayFor(modelItem => item.Duration)</div>
-                                        <div class="col-5 py-1"><strong>End Date:</strong></div>
-                                        <div class="col-7 py-1">  @Html.DisplayFor(modelItem => item.ClientName)</div>
+                                    <a class="tag tag-red mb-3" asp-controller="Projects" asp-action="ConfrimDelete" asp-route-Id="@item.Id">Delete</a>
+                                   
+                                <div class="row">
+                                    <div class="col-5 py-1"><strong>Client's Name:</strong></div>
+                                    <div class="col-7 py-1"> @Html.DisplayFor(modelItem => item.ClientName)</div>
+                                    <div class="col-5 py-1"><strong>Project TimeLine:</strong></div>
+                                    <div class="col-7 py-1">  @Html.DisplayFor(modelItem => item.Duration)</div>
 
-                                        <div class="col-5 py-1"><strong>Question:</strong></div>
-                                        <div class="col-7 py-1"><strong>23</strong></div>
-                                        <div class="col-5 py-1"><strong>Comments:</strong></div>
 
-                                        <div class="col-7 py-1">
-                                            <div class="avatar-list avatar-list-stacked">
-                                                <img class="avatar avatar-sm" src="assets/images/xs/avatar1.jpg" data-toggle="tooltip" title="" data-original-title="Avatar Name" />
-                                                <img class="avatar avatar-sm" src="assets/images/xs/avatar2.jpg" data-toggle="tooltip" title="" data-original-title="Avatar Name" />
-                                                <img class="avatar avatar-sm" src="assets/images/xs/avatar3.jpg" data-toggle="tooltip" title="" data-original-title="Avatar Name" />
-                                                <img class="avatar avatar-sm" src="assets/images/xs/avatar4.jpg" data-toggle="tooltip" title="" data-original-title="Avatar Name" />
-                                                <img class="avatar avatar-sm" src="assets/images/xs/avatar5.jpg" data-toggle="tooltip" title="" data-original-title="Avatar Name" />
-                                                <span class="avatar avatar-sm">+8</span>
-                                            </div>
+                                    <div class="col-5 py-1"><strong>Department:</strong></div>
+                                    <div class="col-7 py-1"><strong>@Html.DisplayFor(modelItem => item.Departments.Name)</strong></div>
+                                    <div class="col-5 py-1"><strong>Resource:</strong></div>
+                                    <div class="col-7 py-1"><strong>23</strong></div>
+                                    <div class="col-5 py-1"><strong>Comments:</strong></div>
+
+                                    <div class="col-7 py-1">
+                                        <div class="avatar-list avatar-list-stacked">
+                                            <img class="avatar avatar-sm" src="assets/images/xs/avatar1.jpg" data-toggle="tooltip" title="" data-original-title="Avatar Name" />
+                                            <img class="avatar avatar-sm" src="assets/images/xs/avatar2.jpg" data-toggle="tooltip" title="" data-original-title="Avatar Name" />
+                                            <img class="avatar avatar-sm" src="assets/images/xs/avatar3.jpg" data-toggle="tooltip" title="" data-original-title="Avatar Name" />
+                                            <img class="avatar avatar-sm" src="assets/images/xs/avatar4.jpg" data-toggle="tooltip" title="" data-original-title="Avatar Name" />
+                                            <img class="avatar avatar-sm" src="assets/images/xs/avatar5.jpg" data-toggle="tooltip" title="" data-original-title="Avatar Name" />
+                                            <span class="avatar avatar-sm">+8</span>
                                         </div>
-                                        <a asp-controller="Projects" asp-action="Edit" asp-route-Id="@item.Id">Edit</a>
-                                        <a asp-controller="Projects" asp-action="ConfrimDelete" asp-route-Id="@item.Id">Delete</a>
                                     </div>
+
+                                </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="clearfix">
