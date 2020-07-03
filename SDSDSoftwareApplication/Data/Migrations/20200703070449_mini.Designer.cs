@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SDSDSoftwareApplication.Data;
 
 namespace SDSDSoftwareApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200703070449_mini")]
+    partial class mini
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -297,7 +299,7 @@ namespace SDSDSoftwareApplication.Data.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("SDSDSoftwareApplication.Models.Tasks", b =>
+            modelBuilder.Entity("SDSDSoftwareApplication.Models.Task", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -344,12 +346,12 @@ namespace SDSDSoftwareApplication.Data.Migrations
                     b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("TasksId")
+                    b.Property<Guid?>("TaskId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasIndex("ProjectId");
 
-                    b.HasIndex("TasksId");
+                    b.HasIndex("TaskId");
 
                     b.HasDiscriminator().HasValue("Resource");
                 });
@@ -407,7 +409,7 @@ namespace SDSDSoftwareApplication.Data.Migrations
 
             modelBuilder.Entity("SDSDSoftwareApplication.Models.Comment", b =>
                 {
-                    b.HasOne("SDSDSoftwareApplication.Models.Tasks", "Tasks")
+                    b.HasOne("SDSDSoftwareApplication.Models.Task", "Tasks")
                         .WithMany("Comments")
                         .HasForeignKey("TasksId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -423,7 +425,7 @@ namespace SDSDSoftwareApplication.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SDSDSoftwareApplication.Models.Tasks", b =>
+            modelBuilder.Entity("SDSDSoftwareApplication.Models.Task", b =>
                 {
                     b.HasOne("SDSDSoftwareApplication.Models.Project", "Projects")
                         .WithMany()
@@ -438,9 +440,9 @@ namespace SDSDSoftwareApplication.Data.Migrations
                         .WithMany("Resources")
                         .HasForeignKey("ProjectId");
 
-                    b.HasOne("SDSDSoftwareApplication.Models.Tasks", null)
+                    b.HasOne("SDSDSoftwareApplication.Models.Task", null)
                         .WithMany("Resources")
-                        .HasForeignKey("TasksId");
+                        .HasForeignKey("TaskId");
                 });
 #pragma warning restore 612, 618
         }

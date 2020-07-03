@@ -1,0 +1,98 @@
+﻿@model SDSDSoftwareApplication.Models.Project
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<div class="card-body">
+
+    <div class="row">
+        <div class="col-md-12">
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+
+
+
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="ProjectName" class="control-label"></label>
+                            <input asp-for="ProjectName" class="form-control" />
+                            <span asp-validation-for="ProjectName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ClientName" class="control-label"></label>
+                            <input asp-for="ClientName" class="form-control" />
+                            <span asp-validation-for="ClientName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Duration" class="control-label"></label>
+                            <input asp-for="Duration" class="form-control" />
+                            <span asp-validation-for="Duration" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="Description" class="control-label"></label>
+                            <textarea asp-for="Description" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                        <label asp-for="DepartmentsId"></label>
+                        <select asp-for="DepartmentsId" class="form-control" asp-items="ViewBag.Departments">
+                            <option value="">Please Select Deparments</option>
+
+                        </select>
+                        <span asp-validation-for="DepartmentsId" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ResourcesId" class="control-label"></label>
+                            <input asp-for="ResourcesId" class="form-control" />
+                            <span asp-validation-for="ResourcesId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label asp-for="Comments" class="control-label"></label>
+                            <textarea asp-for="Comments" class="form-control"></textarea>
+                            <span asp-validation-for="Comments" class="text-danger"></span>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Create">Back to List</a>
+</div>

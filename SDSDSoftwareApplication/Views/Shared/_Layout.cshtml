@@ -1,52 +1,4 @@
-﻿@*<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["Title"] - SDSDSoftwareApplication</title>
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </head>
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SDSDSoftwareApplication</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
-
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2020 - SDSDSoftwareApplication - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @RenderSection("Scripts", required: false)
-    </body>
-    </html>*@
+﻿
 
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -62,6 +14,8 @@
     <title>:: Soccer :: Project Dashboard</title>
 
     <!-- Bootstrap Core and vandor -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <link href="~/font-awesome/css/all.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/assets/plugins/bootstrap/css/bootstrap.min.css" />
 
     <!-- Plugins css -->
@@ -348,11 +302,44 @@
         <div id="left-sidebar" class="sidebar ">
             <h5 class="brand-name">Soccer <a href="javascript:void(0)" class="menu_option float-right"><i class="icon-grid font-16" data-toggle="tooltip" data-placement="left" title="Grid & List Toggle"></i></a></h5>
             <nav id="left-sidebar-nav" class="sidebar-nav">
+
+				<ul class="metismenu">
+					<li class="g_heading">Project</li>
+					<li class="active"><a href="index-2.html"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+					<li><a asp-action="create" asp-controller="Projects"><i class="fa fa-list-ol"></i><span>Projects</span></a></li>
+					<li><a href="project-taskboard.html"><i class="fa fa-calendar-check-o"></i><span>Taskboard</span></a></li>
+					<li><a href="project-ticket.html"><i class="fa fa-list-ul"></i><span>Ticket List</span></a></li>
+					<li><a href="project-ticket-details.html"><i class="icon-tag"></i><span>Ticket Details</span></a></li>
+					<li><a asp-action="List" asp-controller="Departments"><i class="icon-tag"></i><span>Department</span></a></li>
+					<li><a href="project-clients.html"><i class="fa fa-user"></i><span>Clients</span></a></li>
+					<li><a href="project-todo.html"><i class="fa fa-check-square-o"></i><span>Todo List</span></a></li>
+					<li class="g_heading">App</li>
+					<li><a href="app-calendar.html"><i class="fa fa-calendar"></i><span>Calendar</span></a></li>
+					<li><a href="app-chat.html"><i class="fa fa-comments"></i><span>Chat</span></a></li>
+					<li><a href="app-contact.html"><i class="fa fa-address-book"></i><span>Contact</span></a></li>
+					<li><a href="app-filemanager.html"><i class="fa fa-folder"></i><span>FileManager</span></a></li>
+					<li><a href="app-setting.html"><i class="fa fa-gear"></i><span>Setting</span></a></li>
+					<li><a href="page-gallery.html"><i class="fa fa-photo"></i><span>Gallery</span></a></li>
+					<li>
+						<a href="javascript:void(0)" class="has-arrow arrow-c"><i class="fa fa-lock"></i><span>Authentication</span></a>
+						<ul>
+							<li><a href="login.html">Login</a></li>
+							<li><a href="register.html">Register</a></li>
+							<li><a href="forgot-password.html">Forgot password</a></li>
+							<li><a href="404.html">404 error</a></li>
+							<li><a href="500.html">500 error</a></li>
+						</ul>
+					</li>
+					<li class="g_heading">Support</li>
+					<li><a href="javascript:void(0)"><i class="fa fa-support"></i><span>Need Help?</span></a></li>
+					<li><a href="javascript:void(0)"><i class="fa fa-tag"></i><span>ContactUs</span></a></li>
+				</ul>
+
                 <ul class="metismenu">
                     <li class="g_heading">Project</li>
                     <li class="active"><a href="index-2.html"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
-                    <li><a asp-controller="Projects" asp-action="create"><i class="fa fa-list-ol"></i><span>Projects</span></a></li>
-                    <li><a asp-controller="Projects" asp-action="index" ><i class="fa fa-list-ol"></i><span>Project index</span></a></li>
+                    @*<li><a asp-controller="Projects" asp-action="create"><i class="fa fa-list-ol"></i><span>Projects</span></a></li>*@
+                    <li><a asp-controller="Projects" asp-action="create" ><i class="fa fa-list-ol"></i><span>Project </span></a></li>
                     <li><a href="project-taskboard.html"><i class="fa fa-calendar-check-o"></i><span>Taskboard</span></a></li>
                     <li><a href="project-ticket.html"><i class="fa fa-list-ul"></i><span>Ticket List</span></a></li>
                     <li><a href="project-ticket-details.html"><i class="icon-tag"></i><span>Ticket Details</span></a></li>
@@ -379,6 +366,7 @@
                     <li><a href="javascript:void(0)"><i class="fa fa-support"></i><span>Need Help?</span></a></li>
                     <li><a href="javascript:void(0)"><i class="fa fa-tag"></i><span>ContactUs</span></a></li>
                 </ul>
+
             </nav>
         </div>
 
