@@ -2,21 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using SDSDSoftwareApplication.Data;
+using SDSDSoftwareApplication.Models;
+using SDSDSoftwareApplication.Services;
+using SDSDSoftwareApplication.ViewModel;
 
 namespace SDSDSoftwareApplication.Controllers
 {
     public class TasksController : Controller
     {
-        private DataContext db;
+        private ApplicationDbContext db;
         private readonly ITask _tasks;
 
-        private readonly IWebHostEnvironment hostEnvironment;
+        private readonly IComment _comments;
 
-        public TaskController(IWebHostEnvironment host, ITask task, DataContext data)
+        public TasksController(ITask task, IComment comment, ApplicationDbContext data)
         {
-            hostEnvironment = host;
             _tasks = task;
+            _comments = comment;
             db = data;
         }
 
@@ -30,27 +35,7 @@ namespace SDSDSoftwareApplication.Controllers
             return View(_tasks.Tasks);
         }
 
-        //[HttpGet]
-        //public IActionResult Create(bool isSuccess = false)
-        //{
-        //    ViewBag.IsSuccess = isSuccess;
-        //    return View();
-        //}
 
-
-        //[HttpPost]
-        //public IActionResult Create(Tasks task)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _tasks.AddTask(task);
-        //        return  RedirectToAction(nameof(Taskboard), new { isSuccess = true });
-        //    }
-        //    else
-        //    {
-        //        return View();
-        //    }
-        //}
 
 
         [HttpGet]
@@ -81,45 +66,50 @@ namespace SDSDSoftwareApplication.Controllers
 
         }
 
+        //[HttpPost]
+        //public IActionResult AddTask(TaskViewModel task)
+        //{
 
+        //    db.Tasks.Add(task.TaskBoard);
+        //    db.SaveChanges();
+        //    return RedirectToAction(nameof(AddTask));
 
+        //}
 
 
         [HttpPost]
-        public IActionResult AddTask(TaskViewModel task)
+        public async Task<IActionResult> AddTask(TaskViewModel task)
         {
+            if (ModelState.IsValid)
+            {
 
-            if (task.TaskBoard.Id == 0)
-            {
-                db.Tasks.Add(task.TaskBoard);
-                db.SaveChanges();
-            }
-            else
-            {
                 var dataInDb = db.Tasks.FirstOrDefault(a => a.Id == task.TaskBoard.Id);
-                dataInDb.TaskNumber = task.TaskBoard.TaskNumber;
-                dataInDb.DescriptionTitle = task.TaskBoard.DescriptionTitle;
+                dataInDb.TaskName = task.TaskBoard.TaskName;
                 dataInDb.Description = task.TaskBoard.Description;
-                dataInDb.Team = task.TaskBoard.Team;
+                dataInDb.Priority = task.TaskBoard.Priority;
                 dataInDb.StartDate = task.TaskBoard.StartDate;
                 dataInDb.EndDate = task.TaskBoard.EndDate;
-                dataInDb.Duration = (dataInDb.EndDate - dataInDb.StartDate).TotalDays;
-                db.SaveChanges();
-                ViewBag.Duraion = (dataInDb.EndDate - dataInDb.StartDate).TotalDays;
+                task.EndDate = dataInDb.EndDate;
+                task.StartDate = dataInDb.StartDate;
+                dataInDb.Duration = (task.EndDate - task.StartDate).Hours;
+                dataInDb.CompletionTime = task.TaskBoard.CompletionTime;
+
+                dataInDb.Projects = task.TaskBoard.Projects;
+                dataInDb.Resources = task.TaskBoard.Resources;
+               await db.SaveChangesAsync();
+
+                Comment comments = new Comment
+                {
+                    Name = task.comment.Name,
+                    TasksId = task.TaskBoard.Id
+                };
+                _comments.AddComment(comments);
+
             }
 
-            return RedirectToAction(nameof(AddTask), new { isSuccess = true });
 
+            return RedirectToAction("AddTask");
 
-            //if (ModelState.IsValid)
-            //{
-            //    _tasks.AddTask(task);
-            //    return RedirectToAction(nameof(AddTask), new { isSuccess = true });
-            //}
-            //else
-            //{
-            //    return View();
-            //}
         }
     }
 }

@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewData["Title"] = "AddTask";
+}
+
+@model SDSDSoftwareApplication.ViewModel.TaskViewModel
+@{ ViewData["Title"] = "Taskboard";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h1>Taskboard</h1>
+
+@ViewBag.Duraion;
+
+@*@section Taskboard{
+    <a class="nav-link text-dark" asp-area="" asp-controller="Main" asp-action="Taskboard"><strong>Task board</strong></a>
+
+
+}*@
+
+<div class="section-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-md-flex justify-content-between align-items-center">
+                   
+                    <div class="header-action d-flex">
+                        <div class="input-group mr-2">
+                            <input type="text" class="form-control" placeholder="Search...">
+                        </div>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addtask"><i class="fe fe-plus mr-2"></i>Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Add New Task -->
+    <div class="modal fade" id="addtask" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <form class="modal-content" asp-action="AddTask" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h6 class="title" id="defaultModalLabel">Add New Task</h6>
+                </div>
+                <div class="modal-body">
+                    <div class="row clearfix">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input asp-for="@Model.TaskBoard.TaskName" class="form-control" placeholder="Task Name" />
+                                <span asp-validation-for="@Model.TaskBoard.TaskName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        @*<div class="col-12">
+            <div class="form-group">
+                <input asp-for="@Model.TaskBoard.DescriptionTitle" class="form-control" placeholder="Description Title" />
+                <span asp-validation-for="@Model.TaskBoard.DescriptionTitle" class="text-danger"></span>
+            </div>
+        </div>*@
+                        <div class="col-12">
+                            <div class="form-group">
+                                <textarea asp-for="@Model.TaskBoard.Description" class="form-control" placeholder="Description"></textarea>
+                                <span asp-validation-for="@Model.TaskBoard.Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <select asp-for="@Model.TaskBoard.Priority" class="form-control show-tick">
+                                    <option value="">Select Priority</option>
+                                    <option>Urgent</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input asp-for="@Model.TaskBoard.CompletionTime" class="form-control" placeholder="Completion Time" />
+                                <span asp-validation-for="@Model.TaskBoard.CompletionTime" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input asp-for="@Model.TaskBoard.Projects" class="form-control" placeholder="Projects" />
+                                <span asp-validation-for="@Model.TaskBoard.Projects" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input asp-for="@Model.TaskBoard.Resources" class="form-control" placeholder="Resources" />
+                                <span asp-validation-for="@Model.TaskBoard.Resources" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input asp-for="@Model.comment.Name" class="form-control" placeholder="Comments" />
+                                <span asp-validation-for="@Model.comment.Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label>Range</label>
+                            <div class="input-daterange input-group" data-provide="datepicker">
+                                <input type="date" asp-for="@Model.StartDate" class="form-control" />
+                                <span class="input-group-addon"> to </span>
+                                <input type="date" asp-for="@Model.EndDate" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer form-group">
+                    <input type="submit" class="btn btn-primary" value="Add" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="section-body">
+    <div class="container-fluid">
+        <div class="tab-content taskboard">
+            <div class="tab-pane fade show active" id="TaskBoard-list" role="tabpanel">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table_custom ">
+                                <thead>
+                                    <tr>
+                                        <th>Task</th>
+                                        <th>Team</th>
+                                        <th>Duration</th>
+                                        <th>Action</th>
+                                        <th class="w200"></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model.TaskBoards)
+                                    {
+                                    <tr>
+
+
+                                        <td>
+                                            <p> @Html.DisplayFor(modelItem => item.Description)</p>
+                                        </td>
+
+                                        <td>
+                                        </td>
+
+                                   
+                                        <td>
+                                            @*<div class="text-info"> @Html.DisplayFor(modelItem => (item.EndDate - item.StartDate).TotalDays) days</div>*@
+                                            @Html.DisplayFor(modelItem => item.Duration)
+                                        </td>
+                                        <td>
+                                            @*<div class="text-info"> @Html.DisplayFor(modelItem => (item.EndDate - item.StartDate).TotalDays) days</div>*@
+                                            @Html.DisplayFor(modelItem => item.Priority)
+                                        </td>
+ 
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                        </td>
+                                    </tr>
+}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,5 @@
 ﻿using SDSDSoftwareApplication.Models;
+using SDSDSoftwareApplication.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,7 @@ namespace SDSDSoftwareApplication.Services
         public Task<Tasks> SaveTask(Tasks tasks);
 
         IQueryable<Tasks> Search(string input);
+
+        //public TaskViewModel AddTasks(TaskViewModel task);
     }
 }

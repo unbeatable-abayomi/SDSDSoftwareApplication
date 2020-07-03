@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SDSDSoftwareApplication.Data;
 using SDSDSoftwareApplication.Models;
+using SDSDSoftwareApplication.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace SDSDSoftwareApplication.Services
 
         public async Task<Tasks> SaveTask(Tasks tasks)
         {
-            context.Entry(tasks).State = EntityState.Modified;
+            context.Tasks.Update(tasks);
             await context.SaveChangesAsync();
             return tasks;
         }
@@ -56,5 +57,32 @@ namespace SDSDSoftwareApplication.Services
 
             return task;
         }
+
+        //public TaskViewModel AddTasks(TaskViewModel task)
+        //{
+        //    if (task.TaskBoard.Id == null)
+        //    {
+        //        context.Tasks.Add(task.TaskBoard);
+        //        context.SaveChanges();
+        //    }
+        //    else
+        //    {
+
+        //        var dataInDb = context.Tasks.FirstOrDefault(a => a.Id == task.TaskBoard.Id);
+        //        dataInDb.TaskName = task.TaskBoard.TaskName;
+        //        dataInDb.Description = task.TaskBoard.Description;
+        //        dataInDb.Priority = task.TaskBoard.Priority;
+        //        //dataInDb.StartDate = task.TaskBoard.StartDate;
+        //        //dataInDb.EndDate = task.TaskBoard.EndDate;
+        //        dataInDb.Duration = (task.EndDate - task.StartDate).Hours;
+        //        dataInDb.CompletionTime = task.TaskBoard.CompletionTime;
+                
+        //        dataInDb.Projects = task.TaskBoard.Projects;
+        //        dataInDb.Resources = task.TaskBoard.Resources;
+        //        context.SaveChanges();
+        //    }
+        //    return task;
+        //}
+
     }
 }

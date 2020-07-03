@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SDSDSoftwareApplication.Data;
 
-namespace SDSDSoftwareApplication.Data.Migrations
+namespace SDSDSoftwareApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200702195034_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -297,13 +299,10 @@ namespace SDSDSoftwareApplication.Data.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("SDSDSoftwareApplication.Models.Task", b =>
+            modelBuilder.Entity("SDSDSoftwareApplication.Models.Tasks", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CommentsId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTimeOffset?>("CompletionTime")
@@ -313,8 +312,8 @@ namespace SDSDSoftwareApplication.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("Duration")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<double>("Duration")
+                        .HasColumnType("float");
 
                     b.Property<string>("Priority")
                         .IsRequired()
@@ -344,12 +343,12 @@ namespace SDSDSoftwareApplication.Data.Migrations
                     b.Property<Guid?>("ProjectId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("TaskId")
+                    b.Property<Guid?>("TasksId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasIndex("ProjectId");
 
-                    b.HasIndex("TaskId");
+                    b.HasIndex("TasksId");
 
                     b.HasDiscriminator().HasValue("Resource");
                 });
@@ -407,8 +406,8 @@ namespace SDSDSoftwareApplication.Data.Migrations
 
             modelBuilder.Entity("SDSDSoftwareApplication.Models.Comment", b =>
                 {
-                    b.HasOne("SDSDSoftwareApplication.Models.Task", "Tasks")
-                        .WithMany("Comments")
+                    b.HasOne("SDSDSoftwareApplication.Models.Tasks", "Tasks")
+                        .WithMany()
                         .HasForeignKey("TasksId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -423,7 +422,7 @@ namespace SDSDSoftwareApplication.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SDSDSoftwareApplication.Models.Task", b =>
+            modelBuilder.Entity("SDSDSoftwareApplication.Models.Tasks", b =>
                 {
                     b.HasOne("SDSDSoftwareApplication.Models.Project", "Projects")
                         .WithMany()
@@ -438,9 +437,9 @@ namespace SDSDSoftwareApplication.Data.Migrations
                         .WithMany("Resources")
                         .HasForeignKey("ProjectId");
 
-                    b.HasOne("SDSDSoftwareApplication.Models.Task", null)
+                    b.HasOne("SDSDSoftwareApplication.Models.Tasks", null)
                         .WithMany("Resources")
-                        .HasForeignKey("TaskId");
+                        .HasForeignKey("TasksId");
                 });
 #pragma warning restore 612, 618
         }
