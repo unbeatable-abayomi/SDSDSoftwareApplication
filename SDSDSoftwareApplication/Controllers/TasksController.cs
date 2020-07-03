@@ -93,7 +93,7 @@ namespace SDSDSoftwareApplication.Controllers
                 task.StartDate = dataInDb.StartDate;
                 dataInDb.Duration = (task.EndDate - task.StartDate).Hours;
                 dataInDb.CompletionTime = task.TaskBoard.CompletionTime;
-
+                dataInDb.Status = task.TaskBoard.Status;
                 dataInDb.Projects = task.TaskBoard.Projects;
                 dataInDb.Resources = task.TaskBoard.Resources;
                await db.SaveChangesAsync();
