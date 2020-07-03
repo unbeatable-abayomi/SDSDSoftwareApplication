@@ -18,14 +18,14 @@ namespace SDSDSoftwareApplication.Models
         [Required]
         public string Priority { get; set; }
         [Required]
-        public DateTimeOffset Duration { get; set; }
+        public double Duration { get; set; }
         public DateTimeOffset? CompletionTime { get; set; }
-
-        public ICollection<Comment> Comments { get; set; }
-        public Guid CommentsId { get; set; }
-        public Project Projects { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public List<Project> Projects { get; set; }
         public Guid ProjectsId { get; set; }
-        public ICollection<Resource> Resources { get; set; }
+        public List<Resource> Resources { get; set; }
         public string ResourcesId { get; set; }
+        public int Status { get; set; } = 0;
     }
 }

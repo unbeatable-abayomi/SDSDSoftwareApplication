@@ -18,8 +18,6 @@ namespace SDSDSoftwareApplication.Data
         public DbSet<Tasks> Tasks { get; set; }
         
         public DbSet<Comment> Comments { get; set; }
-       
-
     }
 
 

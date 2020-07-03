@@ -8,8 +8,8 @@ namespace SDSDSoftwareApplication.Models
 {
     public class Resource : IdentityUser
     {
-       
-    
-       
+        public int MyProperty { get; set; }
+
+
     }
 }
