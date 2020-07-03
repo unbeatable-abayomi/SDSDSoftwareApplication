@@ -1,0 +1,67 @@
+﻿@model SDSDSoftwareApplication.ViewModel.ApplicationUserViewModel
+
+@{
+    ViewData["Title"] = "AddUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 mt-10">
+        <form asp-action="AddUser" asp-controller="Admin" method="post" enctype="multipart/form-data">
+
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="card">
+                <div class="card-header">
+                    <h4>Register a new User.</h4>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group">
+                        <input type="hidden" asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>*@
+                    @*<div class="form-group">
+                        <label class="control-label">Image</label>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" asp-for="PhotoPath" accept=".png,.jpg,.jpeg,.gif,.tif">
+                            <label class="custom-file-label" asp-for="PhotoPath">Choose file</label>
+                        </div>
+
+                    </div>*@
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PhotoPath, new { @class = " control-label" })
+                        <div class="col-md-10">
+
+                    <input type="file" name="PhotoPath" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" />  
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer"> <button type="submit" class="btn btn-primary">Register</button></div>
+            </div>
+
+
+
+        </form>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

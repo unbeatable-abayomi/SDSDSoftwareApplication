@@ -8,8 +8,12 @@ namespace SDSDSoftwareApplication.Models
 {
     public class Resource : IdentityUser
     {
-       
-    
-       
+
+       [PersonalData]
+        public string Name { get; set; }
+        [PersonalData]
+        public string UserPhoto { get; set;}
+
+
     }
 }
