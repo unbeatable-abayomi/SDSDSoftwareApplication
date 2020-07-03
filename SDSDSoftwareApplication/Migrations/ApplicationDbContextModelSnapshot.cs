@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SDSDSoftwareApplication.Data;
 
-namespace SDSDSoftwareApplication.Data.Migrations
+namespace SDSDSoftwareApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -303,9 +303,6 @@ namespace SDSDSoftwareApplication.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CommentsId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTimeOffset?>("CompletionTime")
                         .HasColumnType("datetimeoffset");
 
@@ -313,8 +310,8 @@ namespace SDSDSoftwareApplication.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset>("Duration")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<double>("Duration")
+                        .HasColumnType("float");
 
                     b.Property<string>("Priority")
                         .IsRequired()
@@ -407,7 +404,7 @@ namespace SDSDSoftwareApplication.Data.Migrations
 
             modelBuilder.Entity("SDSDSoftwareApplication.Models.Comment", b =>
                 {
-                    b.HasOne("SDSDSoftwareApplication.Models.Tasks", "Tasks")
+                    b.HasOne("SDSDSoftwareApplication.Models.Task", "Tasks")
                         .WithMany("Comments")
                         .HasForeignKey("TasksId")
                         .OnDelete(DeleteBehavior.Cascade)

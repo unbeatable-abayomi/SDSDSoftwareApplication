@@ -13,8 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SDSDSoftwareApplication.Models;
-using SDSDSoftwareApplication.DepartmentRepo;
-using SDSDSoftwareApplication.Services;
 
 
 namespace SDSDSoftwareApplication
@@ -37,10 +35,6 @@ namespace SDSDSoftwareApplication
             services.AddIdentity<Resource, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
-
-            services.AddTransient<IDepartment, DepartmentRepository>();
-            services.AddTransient<IProject, ProjectRepository>();
-
             services.AddRazorPages();
         }
 
