@@ -217,15 +217,22 @@
                                         </div>
                                     </div>
 
-                                  
 
-                                    <div class="form-group">
+
+                                    <div class="col-md-6">
                                         <label asp-for="@Model.Projects.DepartmentsId"></label>
                                         <select asp-for="@Model.Projects.DepartmentsId" class="form-control" asp-items="ViewBag.Departments">
                                             <option value="">Please Select Deparments</option>
 
                                         </select>
                                         <span asp-validation-for="@Model.Projects.DepartmentsId" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="@Model.Projects.ResourcesId" class="control-label"></label>
+                                            <input asp-for="@Model.Projects.ResourcesId" class="form-control" />
+                                            <span asp-validation-for="@Model.Projects.ResourcesId" class="text-danger"></span>
+                                        </div>
                                     </div>
 
 
