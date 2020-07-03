@@ -121,7 +121,7 @@
             <div class="tab-pane fade show active" id="TaskBoard-list" role="tabpanel">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="table-responsive">
+                        <d class="table-responsive">
                             <table class="table table-bordered table_custom ">
                                 <thead>
                                     <tr>
@@ -146,7 +146,7 @@
                                         <td>
                                         </td>
 
-                                   
+
                                         <td>
                                             @*<div class="text-info"> @Html.DisplayFor(modelItem => (item.EndDate - item.StartDate).TotalDays) days</div>*@
                                             @Html.DisplayFor(modelItem => item.Duration)
@@ -155,7 +155,12 @@
                                             @*<div class="text-info"> @Html.DisplayFor(modelItem => (item.EndDate - item.StartDate).TotalDays) days</div>*@
                                             @Html.DisplayFor(modelItem => item.Priority)
                                         </td>
- 
+                                        <td>
+                                            <div>
+                                                <input id="status" type ="checkbox" asp-for="@Model.TaskBoard.Status" />
+                                            </div>
+                                            @Html.DisplayFor(modelItem => item.Priority)
+                                        </td>
                                         <td>
                                             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                                             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |

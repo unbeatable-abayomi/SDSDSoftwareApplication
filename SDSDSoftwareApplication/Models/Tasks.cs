@@ -26,7 +26,6 @@ namespace SDSDSoftwareApplication.Models
         public Guid ProjectsId { get; set; }
         public List<Resource> Resources { get; set; }
         public string ResourcesId { get; set; }
-
-        
+        public int Status { get; set; } = 0;
     }
 }
