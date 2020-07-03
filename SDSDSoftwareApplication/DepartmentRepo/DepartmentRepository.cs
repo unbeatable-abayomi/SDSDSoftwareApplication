@@ -18,7 +18,7 @@ namespace SDSDSoftwareApplication.DepartmentRepo
 		{
 			get
 			{
-				return context.Departments;
+				return context.Departments.ToList();
 			}
 		}
 

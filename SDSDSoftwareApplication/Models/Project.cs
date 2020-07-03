@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace SDSDSoftwareApplication.Models
 {
@@ -44,7 +44,7 @@ namespace SDSDSoftwareApplication.Models
        
         
         public Department Departments { get; set; }
-        
+        [Display(Name = "Department")]
         public Guid DepartmentsId { get; set; }
        
         public ICollection<Resource> Resources { get; set; }

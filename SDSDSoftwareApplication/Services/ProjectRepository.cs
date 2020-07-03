@@ -27,32 +27,38 @@ namespace SDSDSoftwareApplication.Services
             await _db.SaveChangesAsync();
             return project;
         }
-        public async Task<Project> GetProject(Guid Id)
+        //public async Task<Project> GetProject(Guid Id)
+        //{
+        //    Project project = _db.Projects.Find(Id);
+
+        //    await _db.SaveChangesAsync();
+        //    return project;
+        //}
+        public Project GetProject(Guid Id)
         {
             Project project = _db.Projects.Find(Id);
 
-            await _db.SaveChangesAsync();
+             _db.SaveChanges();
             return project;
         }
+        //public async Task<Project> DeleteProject(Guid Id)
+        //{
+        //    Project project = await GetProject(Id);
 
-        public async Task<Project> DeleteProject(Guid Id)
-        {
-            Project project = await GetProject(Id);
-
-            if (project != null)
-            {
-                _db.Projects.Remove(project);
-                await _db.SaveChangesAsync();
-            }
+        //    if (project != null)
+        //    {
+        //        _db.Projects.Remove(project);
+        //        await _db.SaveChangesAsync();
+        //    }
 
 
-            return project;
+        //    return project;
 
-        }
-        public async Task<Project> EditProject(Project projects)
+        //}
+        public Project EditProject(Project projects)
         {
             _db.Entry(projects).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            await _db.SaveChangesAsync();
+             _db.SaveChanges();
             return projects;
         }
 
