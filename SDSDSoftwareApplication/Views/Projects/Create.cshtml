@@ -51,20 +51,19 @@
                                 </div>
                                 <div class="card-body">
                                     <span class="tag tag-blue mb-3">Web Design</span>
+                                    <a class="tag tag-blue mb-3" asp-controller="Projects" asp-action="Edit" asp-route-Id="@item.Id">Edit</a>
+                                    <a class="tag tag-blue mb-3" asp-controller="Projects" asp-action="ConfrimDelete" asp-route-Id="@item.Id">Delete</a>
                                     <p> @Html.DisplayFor(modelItem => item.Description)</p>
                                     <div class="row">
                                         <div class="col-5 py-1"><strong>Start Date:</strong></div>
                                         <div class="col-7 py-1">    @Html.DisplayFor(modelItem => item.Duration)</div>
                                         <div class="col-5 py-1"><strong>End Date:</strong></div>
                                         <div class="col-7 py-1">  @Html.DisplayFor(modelItem => item.ClientName)</div>
-                                        <div class="col-7 py-1">  @Html.DisplayFor(modelItem => item.Id)</div>
+
                                         <div class="col-5 py-1"><strong>Question:</strong></div>
                                         <div class="col-7 py-1"><strong>23</strong></div>
                                         <div class="col-5 py-1"><strong>Comments:</strong></div>
-                                        <div class="col-7 py-1"><strong>32</strong></div>
-                                        <div class="col-5 py-1"><strong>Bug:</strong></div>
-                                        <div class="col-7 py-1"><strong>5</strong></div>
-                                        <div class="col-5 py-1"><strong>Team:</strong></div>
+
                                         <div class="col-7 py-1">
                                             <div class="avatar-list avatar-list-stacked">
                                                 <img class="avatar avatar-sm" src="assets/images/xs/avatar1.jpg" data-toggle="tooltip" title="" data-original-title="Avatar Name" />
@@ -75,6 +74,8 @@
                                                 <span class="avatar avatar-sm">+8</span>
                                             </div>
                                         </div>
+                                        <a asp-controller="Projects" asp-action="Edit" asp-route-Id="@item.Id">Edit</a>
+                                        <a asp-controller="Projects" asp-action="ConfrimDelete" asp-route-Id="@item.Id">Delete</a>
                                     </div>
                                 </div>
                                 <div class="card-footer">
@@ -86,9 +87,9 @@
                                         <div class="progress-bar bg-red" role="progressbar" style="width: 15%" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
-                               @*<a href asp-controller="Projects" asp-action="Edit" asp-route-Id=" @Html.DisplayFor(modelItem => item.Id)" value="Edit"/>*@
+                         
 
-                                <a asp-controller="Projects" asp-action="Edit" asp-route-Id="@item.Id">Edit</a>
+                              
                             </div>
                         </div>
                     }

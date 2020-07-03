@@ -25,7 +25,30 @@ namespace SDSDSoftwareApplication.Controllers
             _db = data;
             _department = department;
         }
-       
+        [HttpGet]
+        public IActionResult Create()
+        {
+
+            ViewBag.Departments = new SelectList(_department.Departments, "Id", "Name");
+            var project = new ProjectViewModel()
+            {
+                AllProjects = _db.Projects.ToList()
+            };
+            return View(project);
+        }
+
+        [HttpPost]
+        public IActionResult Create(ProjectViewModel project)
+        {
+
+
+            _db.Projects.Add(project.Projects);
+            _db.SaveChanges();
+
+
+            return RedirectToAction(nameof(Create));
+        }
+
         [HttpGet]
         public IActionResult Edit(Guid Id)
         {
@@ -40,33 +63,30 @@ namespace SDSDSoftwareApplication.Controllers
               _project.EditProject(project);
             return RedirectToAction(nameof(Create));
         }
+        [HttpGet]
 
-
-
-
-
-        [HttpGet]   
-        public IActionResult Create()
+        public IActionResult ConfrimDelete(Guid Id)
         {
-           
-            ViewBag.Departments = new SelectList(_department.Departments, "Id", "Name");
-            var project = new ProjectViewModel()
+            Project project = _project.GetProject(Id);
+            if(project == null)
             {
-                AllProjects = _db.Projects.ToList()
-            };
+                return RedirectToAction(nameof(Create));
+            }
             return View(project);
         }
 
         [HttpPost]
-        public IActionResult Create(ProjectViewModel project)
+
+        public IActionResult Delete(Guid Id)
         {
-            
-         
-                _db.Projects.Add(project.Projects);
-                _db.SaveChanges();
-           
-          
+            Project project = _project.DeleteProject(Id);
             return RedirectToAction(nameof(Create));
         }
+
+
+      
+
+
+
     }
 }

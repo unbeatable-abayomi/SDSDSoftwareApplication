@@ -11,7 +11,7 @@ namespace SDSDSoftwareApplication.Services
         IEnumerable<Project> GetAllProjects { get; }
         public Task<Project> AddProjects(Project project);
         public Project GetProject(Guid Id);
-        //public Task<Project> DeleteProject(Guid Id);
+        public Project DeleteProject(Guid Id);
 
         public Project EditProject(Project projects);
         IQueryable<Project> Search(string name);
